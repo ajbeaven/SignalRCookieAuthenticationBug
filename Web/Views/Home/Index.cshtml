@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignalRCookieAuthenticationBug.Web</title>
+</head>
+<body>
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+        <div>
+            You are logged in to @User.Identity.Name.
+        </div>
+        <form asp-area="" asp-action="Logout" asp-controller="Account">
+            <button type="submit">Logout</button>
+        </form>
+        <button id="checkButton">Check logged in user in SignalR</button>
+    }
+    else
+    {
+        <div>
+            You are not logged in.
+        </div>
+        <form asp-area="" asp-action="Login" asp-controller="Account">
+            <button type="submit">Click to login to "MyUser"</button>
+        </form>
+    }
+
+<script src="js/signalr/dist/browser/signalr.min.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>
+
